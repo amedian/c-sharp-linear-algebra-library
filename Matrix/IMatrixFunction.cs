@@ -3,7 +3,7 @@
     public interface IMatrixFunction
     {
         /**
-         * Applies a calculation function on a given matrix element.
+         * Applies a function on a given matrix element.
          */
         float Calculate(float element);
     }
