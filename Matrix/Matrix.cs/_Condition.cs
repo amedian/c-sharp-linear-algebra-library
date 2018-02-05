@@ -16,7 +16,7 @@ namespace Amedian.LinearAlgebra
             {
                 for (int col = 0; col < m1.columnLength; col++)
                 {
-                    if (m1.elements[row, col] - m2.elements[row, col] > Double.Epsilon)
+                    if (Math.Abs(m1.elements[row, col] - m2.elements[row, col]) > Double.Epsilon)
                     {
                         return false;
                     }
