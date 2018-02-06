@@ -1,10 +1,6 @@
 .vs/
-packages/
+LinearAlgebra/bin/
+LinearAlgebra/obj/
 LinearAlgebraTest/bin/
 LinearAlgebraTest/obj/
-LinearAlgebra/obj/
-LinearAlgebra/bin/
-*.csproj
-*.sln
-LinearAlgebraTest/packages.config
-LinearAlgebraTest/Properties/
+packages/
