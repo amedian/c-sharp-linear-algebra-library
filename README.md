@@ -4,8 +4,8 @@ Provides basic linear algebra solutions as a DLL.
 
 ### Target framework
 
-DLL:   .NET Standard 2.0
-Tests: .NET Framework 4.6.1
+- DLL:   .NET Standard 2.0
+- Tests: .NET Framework 4.6.1
 
 ### Prerequisites
 
