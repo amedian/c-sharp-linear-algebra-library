@@ -1,17 +1,106 @@
 # Linear algebra (C#)
 
-Provides basic linear algebra solutions as a DLL.
+Provides basic linear algebra solutions. Currently implements a 2D float matrix with basic operations.
 
-### Target framework
+## Examples
 
-- DLL:   .NET Standard 2.0
-- Tests: .NET Framework 4.6.1
+Multiplying with scalars
+```c#
+Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
 
-### Prerequisites
+Console.WriteLine(m * 2); // Console.WriteLine(2 * m);
 
-The project has no other library dependencies.
+Output:
+[8, -10, 5]
+[-4, 7, 12]
+```
 
-### Compiling as DLL using Visual Studio 2017
+Transpose matrix
+```c#
+Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
+
+Console.WriteLine(~m);
+
+Output:
+[4, -2]
+[-5, 3.5]
+[2.5, 6]
+```
+
+Multiplying with matricies
+```c#
+Matrix m = new Matrix(new float[,] {{4, -5}, {-2, 3.5}});
+Matrix m2 = new Matrix(new float[,] {{-2, -7, -3}, {2.5, 5, 4}});
+
+Console.WriteLine(m * m2);
+
+Output:
+[-20.5 -53 -32]
+[12.75 31.5 20]
+```
+
+
+Addition, subtraction
+```c#
+Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
+Matrix m2 = new Matrix(new float[,] {{-2, -7, -3}, {2.5, 5, 4}});
+
+Console.WriteLine(m + m2);
+Console.WriteLine();
+Console.WriteLine(m - m2);
+
+Output:
+[2, -1.5, 8.5]
+[0.5, -2, 1]
+
+[6, -8.5, -3.5]
+[-4.5, -12, -7]
+```
+
+Conditions (uses Double.Epsilon)
+```c#
+Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
+Matrix m2 = new Matrix(new float[,] {{8, -10, 5}, {-4, 7, 12}});
+
+Console.WriteLine(m == m2);
+Console.WriteLine();
+Console.WriteLine(m2 == m * 2);
+
+Output:
+false
+
+true
+```
+
+Applying custom functions on each matrix element
+```c#
+class CustomMatrixFunction : IMatrixFunction
+{
+	public float Calculate(float element)
+	{
+		return element * 2 + 1;
+	}
+}
+
+Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
+IMatrixFunction f = new CustomMatrixFunction();
+
+Console.WriteLine(m.Apply(f));
+
+Output:
+[9 -9, 6]
+[-3 8 13]
+```
+
+## Specification
+
+| Project | Target framework | Prerequisites |
+| --- | --- | --- |
+| LinearAlgebra | .NET Standard 2.0 | No dependency |
+| LinearAlgebraTest | .NET Framework 4.6.1 | MSTest.TestAdapter.1.1.18, MSTest.TestFramework.1.1.18 |
+
+
+### Compiling to DLL using Visual Studio 2017
 
 - Clone the repository to a directory.
 - Start Microsoft Visual Studio 2017.
@@ -19,6 +108,14 @@ The project has no other library dependencies.
 - Go to the Solution Explorer.
 - Right click on LinearAlgebra solution > Build
 - This should generate an AmedianLinearAlgebra.dll in your target directory.
+
+Alternativly
+
+- Clone the repository to a directory.
+- Go to this directory.
+```
+dotnet build LinearAlgebra
+```
 
 ### Use the generated DLL in your project
 
@@ -28,7 +125,7 @@ The project has no other library dependencies.
 - Right click on Dependencies > Add reference > Browse > Select the DLL
 - You are ready to use the library in your project.
 
-## Running the tests
+### Running the tests
 
 - Start Microsoft Visual Studio 2017.
 - Open Test Explorer (View > Other Windows > Test).
@@ -36,6 +133,16 @@ The project has no other library dependencies.
 - Select the LinearAlgebraTest solution.
 - Press "Run all" in Test explorer.
 - Tests should run and pass.
+
+Alternativly
+
+- Clone the repository to a directory.
+- Go to this directory.
+```
+dotnet test LinearAlgebraTest
+```
+
+Note: NuGet dependency packages have to be restored in this case
 
 ## Versioning
 
