@@ -11,8 +11,8 @@ Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
 Console.WriteLine(m * 2); // Console.WriteLine(2 * m);
 
 Output:
-[8, -10, 5]
-[-4, 7, 12]
+[8 -10 5]
+[-4 7 12]
 ```
 
 Transpose matrix
@@ -22,9 +22,9 @@ Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
 Console.WriteLine(~m);
 
 Output:
-[4, -2]
-[-5, 3.5]
-[2.5, 6]
+[4 -2]
+[-5 3.5]
+[2.5 6]
 ```
 
 Multiplying with matricies
@@ -50,11 +50,11 @@ Console.WriteLine();
 Console.WriteLine(m - m2);
 
 Output:
-[2, -1.5, 8.5]
-[0.5, -2, 1]
+[2 -1.5 8.5]
+[0.5 -2 1]
 
-[6, -8.5, -3.5]
-[-4.5, -12, -7]
+[6 -8.5 -3.5]
+[-4.5 -12 -7]
 ```
 
 Conditions (uses Double.Epsilon)
@@ -88,7 +88,7 @@ IMatrixFunction f = new CustomMatrixFunction();
 Console.WriteLine(m.Apply(f));
 
 Output:
-[9 -9, 6]
+[9 -9 6]
 [-3 8 13]
 ```
 
