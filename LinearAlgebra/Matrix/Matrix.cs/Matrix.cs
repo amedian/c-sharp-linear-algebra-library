@@ -80,6 +80,21 @@ namespace Amedian.LinearAlgebra
             return s;
         }
 
+        public int GetColumnLength()
+        {
+            return columnLength;
+        }
+
+        public int GetRowLength()
+        {
+            return rowLength;
+        }
+
+        public float Get(int rowIndex, int columnIndex)
+        {
+            return elements[rowIndex, columnIndex];
+        }
+
         /**
          * @throws ArgumentDimensionMissmatchException
          */
