@@ -116,5 +116,20 @@ namespace Amedian.LinearAlgebraTest
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void TestMatrixIsIndependentFromConstructorElement()
+        {
+            // Assign
+            float[,] providedValue = new float[1, 1] { { 1f } };
+            float[,] expectedValue = (float[,])providedValue.Clone();
+            Matrix m = new Matrix(providedValue);
+
+            // Act
+            providedValue[0, 0] = 2f;
+
+            // Assert
+            Assert.AreEqual(expectedValue[0, 0], m.Get(0, 0));
+        }
     }
 }

@@ -10,6 +10,10 @@ namespace Amedian.LinearAlgebra
         protected const string ERROR_COLUMN_DIMENSION_MISSMATCH = "Column dimension missmatch: {0} <> {1}.";
         protected const string ERROR_MULTIPLY_DIMENSION_MISSMATCH = "Multiplicand's column dimension does not match multiplier's row dimension: {0} <> {1}.";
 
+        /**
+         * First index is interpreted as the row index of the matrix, starting at 0.
+         * Second index is interpreted as the column index of the matrix, starting at 0.
+         */
         protected float[,] elements;
 
         protected int rowLength;
@@ -17,8 +21,9 @@ namespace Amedian.LinearAlgebra
         protected int hashCode = 0;
 
         /**
-         * Initialises a 2D matrix with float values.
+         * Initialises a 2D matrix with the float values.
          * The matrix' dimension has to be at least [1 x 1].
+         * Note: Provided value is cloned and the reference is omitted in the further processing.
          * 
          * Defined operators:
          * ~M       : transposes M matrix
@@ -37,8 +42,8 @@ namespace Amedian.LinearAlgebra
          * System.Console.WriteLine(m);
          * 
          * Output:
-         * [1, 2, 3]
-         * [4, 5, 6]
+         * [1 2 3]
+         * [4 5 6]
          */
         public Matrix(float[,] elements)
         {
@@ -48,7 +53,7 @@ namespace Amedian.LinearAlgebra
             {
                 throw new InvalidDimensionException(string.Format(ERROR_MINIMUM_REQUIREMENTS, rowLength, columnLength));
             }
-            this.elements = elements;
+            this.elements = (float[,])elements.Clone();
         }
 
         /**

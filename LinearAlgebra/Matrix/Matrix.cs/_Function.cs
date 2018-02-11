@@ -8,24 +8,23 @@
          * @example
          * 
          * Input: 
-         * [1, 2]
-         * [3, 4]
+         * [1 2]
+         * [3 4]
          * 
          * f(x) = 2 * x + 1
          * 
          * Output:
-         * [3, 5]
-         * [7, 9]
+         * [3 5]
+         * [7 9]
          */
         public Matrix Apply(IMatrixFunction f)
         {
             float[,] result = new float[rowLength, columnLength];
-
-            for (int row = 0; row < rowLength; row++)
+            for (int rowIndex = 0; rowIndex < rowLength; rowIndex++)
             {
-                for (int col = 0; col < columnLength; col++)
+                for (int colIndex = 0; colIndex < columnLength; colIndex++)
                 {
-                    result[row, col] = f.Calculate(elements[row, col]);
+                    result[rowIndex, colIndex] = f.Calculate(elements[rowIndex, colIndex]);
                 }
             }
 

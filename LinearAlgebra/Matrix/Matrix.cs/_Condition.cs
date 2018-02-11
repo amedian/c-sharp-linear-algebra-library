@@ -12,11 +12,11 @@ namespace Amedian.LinearAlgebra
         {
             AssertSizeMatch(m1, m2);
 
-            for (int row = 0; row < m1.rowLength; row++)
+            for (int rowIndex = 0; rowIndex < m1.rowLength; rowIndex++)
             {
-                for (int col = 0; col < m1.columnLength; col++)
+                for (int columnIndex = 0; columnIndex < m1.columnLength; columnIndex++)
                 {
-                    if (Math.Abs(m1.elements[row, col] - m2.elements[row, col]) > Double.Epsilon)
+                    if (Math.Abs(m1.elements[rowIndex, columnIndex] - m2.elements[rowIndex, columnIndex]) > Double.Epsilon)
                     {
                         return false;
                     }

@@ -10,26 +10,26 @@
          * @example
          * 
          * Input:
-         * [1, 2, 3]
-         * [4, 5, 6]
+         * [1 2 3]
+         * [4 5 6]
          * 
          * Output:
-         * [1, 4]
-         * [2, 5]
-         * [3, 6]
+         * [1 4]
+         * [2 5]
+         * [3 6]
          */
         public static Matrix operator ~(Matrix m1)
         {
-            float[,] result = new float[m1.columnLength, m1.rowLength];
-            for (int row = 0; row < m1.rowLength; row++)
+            float[,] transposedElements = new float[m1.columnLength, m1.rowLength];
+            for (int rowIndex = 0; rowIndex < m1.rowLength; rowIndex++)
             {
-                for (int col = 0; col < m1.columnLength; col++)
+                for (int columnIndex = 0; columnIndex < m1.columnLength; columnIndex++)
                 {
-                    result[col, row] = m1.elements[row, col];
+                    transposedElements[columnIndex, rowIndex] = m1.elements[rowIndex, columnIndex];
                 }
             }
 
-            return new Matrix(result);
+            return new Matrix(transposedElements);
         }
     }
 }
