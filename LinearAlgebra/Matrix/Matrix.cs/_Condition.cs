@@ -4,10 +4,10 @@ namespace Amedian.LinearAlgebra
 {
     partial class Matrix
     {
-        /**
-         * Checks if each value within M1 [n x m] matrix matches the corresponding value within the M2 [n x m] matrix
-         * under the Double.Epsilon error.
-         */
+        /// <summary>
+        /// Checks if each value within M1 [n x m] matrix matches the corresponding value within the M2 [n x m] matrix
+        /// under the Double.Epsilon error. 
+        /// </summary>
         public static bool operator ==(Matrix m1, Matrix m2)
         {
             AssertSizeMatch(m1, m2);
@@ -26,17 +26,17 @@ namespace Amedian.LinearAlgebra
             return true;
         }
 
-        /**
-         * @see Matrix::operator==(Matrix,Matrix)
-         */
+        /// <summary>
+        /// <seealso cref="Matrix.operator==(Matrix,Matrix)"/>
+        /// </summary>
         public static bool operator !=(Matrix m1, Matrix m2)
         {
             return !(m1 == m2);
         }
 
-        /**
-         * @see Matrix::operator==(Matrix,Matrix)
-         */
+        /// <summary>
+        /// <seealso cref="Matrix.operator==(Matrix,Matrix)"/>
+        /// </summary>
         public override bool Equals(Object obj)
         {
             if (obj.GetType() != typeof(Matrix))

@@ -2,9 +2,9 @@
 {
     public interface IMatrixFunction
     {
-        /**
-         * Applies a function on a given matrix element.
-         */
+        /// <summary>
+        /// Applies a function on a given matrix element.
+        /// </summary>
         float Calculate(float element);
     }
 }

@@ -3,6 +3,26 @@ using System;
 
 namespace Amedian.LinearAlgebra
 {
+    /// <remarks>
+    /// Defined operators:
+    /// ~M       : transposes M matrix
+    /// M1 + M2  : Adds M1 to M2
+    /// M1 - M2  : Subtracts M2 from M1
+    /// S * M    : Multiplies M matrix with S scalar
+    /// M * S    : Multiplies M matrix with S scalar
+    /// M1 * M2  : Multiplies M1 matrix with M2 matrix
+    /// M1 == M2 : Returns true if all of the corresponding values are matching within Double.Epsilon
+    /// M1 != M2 : Returns false if any of the corresponding values are not matching within Double.Epsilon
+    /// </remarks>
+    /// <example>
+    /// Usage:
+    /// Matrix m = new Matrix(new float[2, 3] { {1f, 2f, 3f}, {4f, 5f, 6f} });
+    /// System.Console.WriteLine(m);
+    ///  
+    /// Output:
+    /// [1 2 3]
+    /// [4 5 6]
+    /// </example>
     public partial class Matrix
     {
         protected const string ERROR_MINIMUM_REQUIREMENTS = "Minimum dimension requirement [1 x 1]. [{0} x {1}] given.";
@@ -10,41 +30,23 @@ namespace Amedian.LinearAlgebra
         protected const string ERROR_COLUMN_DIMENSION_MISSMATCH = "Column dimension missmatch: {0} <> {1}.";
         protected const string ERROR_MULTIPLY_DIMENSION_MISSMATCH = "Multiplicand's column dimension does not match multiplier's row dimension: {0} <> {1}.";
 
-        /**
-         * First index is interpreted as the row index of the matrix, starting at 0.
-         * Second index is interpreted as the column index of the matrix, starting at 0.
-         */
+        /// <summary>
+        /// First index is interpreted as the row index of the matrix, starting at 0.
+        /// Second index is interpreted as the column index of the matrix, starting at 0.
+        /// </summary>
         protected float[,] elements;
 
         protected int rowLength;
         protected int columnLength;
         protected int hashCode = 0;
 
-        /**
-         * Initialises a 2D matrix with the float values.
-         * The matrix' dimension has to be at least [1 x 1].
-         * Note: Provided value is cloned and the reference is omitted in the further processing.
-         * 
-         * Defined operators:
-         * ~M       : transposes M matrix
-         * M1 + M2  : Adds M1 to M2
-         * M1 - M2  : Subtracts M2 from M1
-         * S * M    : Multiplies M matrix with S scalar
-         * M * S    : Multiplies M matrix with S scalar
-         * M1 * M2  : Multiplies M1 matrix with M2 matrix
-         * M1 == M2 : Returns true if all of the corresponding values are matching within Double.Epsilon
-         * M1 != M2 : Returns false if any of the corresponding values are not matching within Double.Epsilon
-         * 
-         * @example
-         * 
-         * Usage:
-         * Matrix m = new Matrix(new float[2, 3] { {1f, 2f, 3f}, {4f, 5f, 6f} });
-         * System.Console.WriteLine(m);
-         * 
-         * Output:
-         * [1 2 3]
-         * [4 5 6]
-         */
+        /// <summary>
+        /// Initialises a 2D matrix with the float values.
+        /// The matrix' dimension has to be at least [1 x 1].
+        /// </summary>
+        /// <remarks>
+        /// Provided values are cloned and the proveded reference is omitted in the further process.
+        /// </remarks>
         public Matrix(float[,] elements)
         {
             rowLength = elements.GetLength(0);
@@ -56,19 +58,17 @@ namespace Amedian.LinearAlgebra
             this.elements = (float[,])elements.Clone();
         }
 
-        /**
-         * Note: HashCode is not implemented due YAGNI.
-         */
+        /// <summary>
+        /// HashCode is not implemented due YAGNI.
+        /// </summary>
         public override int GetHashCode()
         {
             return hashCode;
         }
 
-        /**
-         * Displays the 2D matrix as a multiple line string.
-         * 
-         * @see Matrix::Matrix()
-         */
+        /// <summary>
+        /// Displays the 2D <seealso cref="Matrix"/> as a multiple line string.
+        /// </summary>
         public override string ToString()
         {
             string s = "";
@@ -105,9 +105,6 @@ namespace Amedian.LinearAlgebra
             elements[rowIndex, columnIndex] = newValue;
         }
 
-        /**
-         * @throws ArgumentDimensionMissmatchException
-         */
         protected static void AssertSizeMatch(Matrix m1, Matrix m2)
         {
             if (m1.rowLength != m2.rowLength)
@@ -129,9 +126,6 @@ namespace Amedian.LinearAlgebra
             }
         }
 
-        /**
-         * @throws ArgumentDimensionMissmatchException
-         */
         protected static void AssertMultiplySizeMatch(Matrix m1, Matrix m2)
         {
             if (m1.columnLength != m2.rowLength)

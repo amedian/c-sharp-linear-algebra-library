@@ -131,5 +131,20 @@ namespace Amedian.LinearAlgebraTest
             // Assert
             Assert.AreEqual(expectedValue[0, 0], m.Get(0, 0));
         }
+
+        [TestMethod]
+        public void TestCloneCreatesAValueIndependentMatrix()
+        {
+            // Assign
+            float expectedValue = 1f;
+            Matrix m1 = new Matrix(new float[1,1] { { expectedValue } });
+
+            // Act
+            Matrix m2 = m1.Clone();
+            m1.Set(0, 0, expectedValue + 1f);
+
+            // Assert
+            Assert.AreEqual(expectedValue, m2.Get(0, 0));
+        }
     }
 }

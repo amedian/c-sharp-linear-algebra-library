@@ -2,22 +2,20 @@
 {
     partial class Matrix
     {
-        /**
-         * Transposes the given [n x m] matrix and returns a transposed [m x n] matrix.
-         * 
-         * @see https://en.wikipedia.org/wiki/Transpose
-         * 
-         * @example
-         * 
-         * Input:
-         * [1 2 3]
-         * [4 5 6]
-         * 
-         * Output:
-         * [1 4]
-         * [2 5]
-         * [3 6]
-         */
+        /// <summary>
+        /// Transposes the given [n x m] matrix and returns a transposed [m x n] matrix.
+        /// </summary>
+        /// <see cref="https://en.wikipedia.org/wiki/Transpose"/>
+        /// <example>
+        /// Input:
+        /// [1 2 3]
+        /// [4 5 6]
+        /// 
+        /// Output:
+        /// [1 4]
+        /// [2 5]
+        /// [3 6]
+        /// </example>
         public static Matrix operator ~(Matrix m1)
         {
             float[,] transposedElements = new float[m1.columnLength, m1.rowLength];
