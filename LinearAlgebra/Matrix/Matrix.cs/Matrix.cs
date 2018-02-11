@@ -95,6 +95,11 @@ namespace Amedian.LinearAlgebra
             return elements[rowIndex, columnIndex];
         }
 
+        public void Set(int rowIndex, int columnIndex, float newValue)
+        {
+            elements[rowIndex, columnIndex] = newValue;
+        }
+
         /**
          * @throws ArgumentDimensionMissmatchException
          */
