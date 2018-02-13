@@ -21,13 +21,13 @@
             float[,] result = new float[rowLength, columnLength];
             for (int rowIndex = 0; rowIndex < rowLength; rowIndex++)
             {
-                for (int colIndex = 0; colIndex < columnLength; colIndex++)
+                for (int columnIndex = 0; columnIndex < columnLength; columnIndex++)
                 {
-                    result[rowIndex, colIndex] = f.Calculate(elements[rowIndex, colIndex]);
+                    result[rowIndex, columnIndex] = f.Calculate(elements[rowIndex, columnIndex]);
                 }
             }
 
-            return new Matrix(result);
+            return new Matrix(result, rowLength, columnLength);
         }
     }
 }

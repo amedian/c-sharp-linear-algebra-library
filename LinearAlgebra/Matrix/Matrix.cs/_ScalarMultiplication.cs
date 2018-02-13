@@ -30,7 +30,7 @@
                 }
             }
 
-            return new Matrix(product);
+            return new Matrix(product, m1.rowLength, m1.columnLength);
         }
 
         /// <summary>

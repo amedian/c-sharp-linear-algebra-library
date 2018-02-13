@@ -31,7 +31,7 @@
                 }
             }
 
-            return new Matrix(product);
+            return new Matrix(product, m1.rowLength, m2.columnLength);
         }
     }
 }

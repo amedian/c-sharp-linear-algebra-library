@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ExampleMatrixFunction.cs" />
-    <Compile Include="Matrix\MatrixTest.cs" />
+    <Compile Include="MatrixTest\MatrixTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

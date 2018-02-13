@@ -59,6 +59,20 @@ namespace Amedian.LinearAlgebra
         }
 
         /// <summary>
+        /// Creates a matrix and initialises with the given arguments without any business logic.
+        /// </summary>
+        /// <remarks>
+        /// Protected, input check free, clone free constructor for efficiency reasons.
+        /// Use it with caution (the public constructor's requirements have to be provided manually).
+        /// </remarks>
+        protected Matrix(float[,] elements, int rowLength, int columnLength)
+        {
+            this.elements = elements;
+            this.rowLength = rowLength;
+            this.columnLength = columnLength;
+        }
+
+        /// <summary>
         /// HashCode is not implemented due YAGNI.
         /// </summary>
         public override int GetHashCode()
@@ -105,6 +119,9 @@ namespace Amedian.LinearAlgebra
             elements[rowIndex, columnIndex] = newValue;
         }
 
+        /// <summary>
+        /// Asserts if the given M1 and M2 matricies have the exactly same row and column counts.
+        /// </summary>
         protected static void AssertSizeMatch(Matrix m1, Matrix m2)
         {
             if (m1.rowLength != m2.rowLength)
@@ -126,6 +143,10 @@ namespace Amedian.LinearAlgebra
             }
         }
 
+        /// <summary>
+        /// Asserts if the given M1 and M2 matricies have the apropiate row and column sizes compared to matrix multiply rules.
+        /// </summary>
+        /// <see cref="https://en.wikipedia.org/wiki/Matrix_multiplication"/>
         protected static void AssertMultiplySizeMatch(Matrix m1, Matrix m2)
         {
             if (m1.columnLength != m2.rowLength)

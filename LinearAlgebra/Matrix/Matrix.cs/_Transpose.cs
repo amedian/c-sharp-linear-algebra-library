@@ -27,7 +27,7 @@
                 }
             }
 
-            return new Matrix(transposedElements);
+            return new Matrix(transposedElements, m1.columnLength, m1.rowLength);
         }
     }
 }

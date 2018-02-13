@@ -31,7 +31,7 @@
                 }
             }
 
-            return new Matrix(difference);
+            return new Matrix(difference, m1.rowLength, m1.columnLength);
         }
     }
 }

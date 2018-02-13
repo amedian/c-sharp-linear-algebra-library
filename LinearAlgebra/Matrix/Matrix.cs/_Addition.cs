@@ -30,7 +30,7 @@
                 }
             }
 
-            return new Matrix(sum);
+            return new Matrix(sum, m1.rowLength, m1.columnLength);
         }
     }
 }
