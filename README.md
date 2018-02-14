@@ -147,6 +147,9 @@ Note: NuGet dependency packages have to be restored in this case
 ## Versioning
 
 I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases](https://github.com/amedian/c-sharp-linear-algebra/releases). 
+- patch: small modification which does not change any public/protected method's signature and business contract
+- minor: a modification which does not change any public method's signature and business contract
+- major: be prepared to any kind of change :)
 
 ## License
 
