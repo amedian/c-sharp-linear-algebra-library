@@ -4,7 +4,7 @@ Provides basic linear algebra solutions. Currently implements a 2D float matrix 
 
 ## Examples
 
-Multiplying with scalars
+Operations with scalars (+, -, *)
 ```c#
 Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
 
@@ -39,6 +39,17 @@ Output:
 [12.75 31.5 20]
 ```
 
+Multiplying with matricies (elementwise - non-standard multiplying)
+```c#
+Matrix m = new Matrix(new float[,] {{1, 2}, {3, 4}});
+Matrix m2 = new Matrix(new float[,] {{10, 20}, {30, 40}});
+
+Console.WriteLine(m.ElementwiseMultiply(m2));
+
+Output:
+[10 40]
+[90 160]
+```
 
 Addition, subtraction
 ```c#
@@ -76,7 +87,7 @@ Applying custom functions on each matrix element
 ```c#
 class CustomMatrixFunction : IMatrixFunction
 {
-	public float Calculate(float element)
+	public float Calculate(int rowIndex, int columnIndex, float element)
 	{
 		return element * 2 + 1;
 	}
@@ -85,7 +96,7 @@ class CustomMatrixFunction : IMatrixFunction
 Matrix m = new Matrix(new float[,] {{4, -5, 2.5}, {-2, 3.5, 6}});
 IMatrixFunction f = new CustomMatrixFunction();
 
-Console.WriteLine(m.Apply(f));
+Console.WriteLine(m * f);
 
 Output:
 [9 -9 6]
