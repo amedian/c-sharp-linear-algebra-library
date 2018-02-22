@@ -23,6 +23,23 @@ namespace Amedian.LinearAlgebraTest
         }
 
         [TestMethod]
+        public void TestScalarAdd()
+        {
+            // Assign
+            Matrix m = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            float scalar = 3f;
+            Matrix expectedResult = new Matrix(new float[2, 3] { { 4f, 5f, 6f }, { 7f, 8f, 9f } });
+
+            // Act
+            Matrix actualResult1 = m + scalar;
+            Matrix actualResult2 = scalar + m;
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult1);
+            Assert.AreEqual(expectedResult, actualResult2);
+        }
+
+        [TestMethod]
         public void TestSub()
         {
             // Assign
@@ -32,6 +49,36 @@ namespace Amedian.LinearAlgebraTest
 
             // Act
             Matrix actualResult = m1 - m2;
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestScalarSubWhenFirstArgumentIsMatrix()
+        {
+            // Assign
+            Matrix m = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            float scalar = 3f;
+            Matrix expectedResult = new Matrix(new float[2, 3] { { -2f, -1f, 0f }, { 1f, 2f, 3f } });
+
+            // Act
+            Matrix actualResult = m - scalar;
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestScalarSubWhenFirstArgumentIsScalar()
+        {
+            // Assign
+            Matrix m = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            float scalar = 3f;
+            Matrix expectedResult = new Matrix(new float[2, 3] { { 2f, 1f , 0 }, { -1f, -2f, -3f } });
+
+            // Act
+            Matrix actualResult = scalar - m;
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -108,13 +155,15 @@ namespace Amedian.LinearAlgebraTest
             // Assign
             ExampleMatrixFunction f = new ExampleMatrixFunction();
             Matrix m1 = new Matrix(new float[3, 2] { { 1f, 2f }, { 4f, 6f }, { 8f, -5f } });
-            Matrix expectedResult = new Matrix(new float[3, 2] { { 3f, 5f }, { 9f, 13f }, { 17f, -9f } });
+            Matrix expectedResult = new Matrix(new float[3, 2] { { 1f, 3f }, { 6f, 9f }, { 12f, 0f } });
 
             // Act
-            Matrix actualResult = m1.Apply(f);
+            Matrix actualResult1 = m1 * f;
+            Matrix actualResult2 = f * m1;
 
             // Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult, actualResult1);
+            Assert.AreEqual(expectedResult, actualResult2);
         }
 
         [TestMethod]
@@ -145,6 +194,23 @@ namespace Amedian.LinearAlgebraTest
 
             // Assert
             Assert.AreEqual(expectedValue, m2.Get(0, 0));
+        }
+
+        [TestMethod]
+        public void TestElementwiseMultiply()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            Matrix m2 = new Matrix(new float[2, 3] { { 10f, 20f, 30f }, { 40f, 50f, 60f } });
+            Matrix expectedResult = new Matrix(new float[2, 3] { { 10f, 40f, 90f }, { 160f, 250f, 360f } });
+
+            // Act
+            Matrix actualResult1 = m1.ElementwiseMultiply(m2);
+            Matrix actualResult2 = m2.ElementwiseMultiply(m1);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult1);
+            Assert.AreEqual(expectedResult, actualResult2);
         }
     }
 }

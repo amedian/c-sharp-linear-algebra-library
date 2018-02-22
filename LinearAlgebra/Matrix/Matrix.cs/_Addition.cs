@@ -32,5 +32,41 @@
 
             return new Matrix(sum, m1.rowLength, m1.columnLength);
         }
+
+        /// <summary>
+        /// Adds the provided float value to each element of the provided M1 [n x m] matrix and returns the sum [n x m] matrix.
+        /// </summary>
+        /// <example>
+        /// Input:
+        /// [0 1 2]
+        /// [3 4 5] + 1
+        /// [6 7 8]
+        /// 
+        /// Output:
+        /// [1 2 3]
+        /// [4 5 6]
+        /// [7 8 9]
+        /// </example>
+        public static Matrix operator +(float f, Matrix m1)
+        {
+            float[,] sum = new float[m1.rowLength, m1.columnLength];
+            for (int rowIndex = 0; rowIndex < m1.rowLength; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < m1.columnLength; columnIndex++)
+                {
+                    sum[rowIndex, columnIndex] = m1.elements[rowIndex, columnIndex] + f;
+                }
+            }
+
+            return new Matrix(sum, m1.rowLength, m1.columnLength);
+        }
+
+        /// <summary>
+        /// <seealso cref="Matrix.operator +(float,Matrix)"/>
+        /// </summary>
+        public static Matrix operator +(Matrix m1, float f)
+        {
+            return f + m1;
+        }
     }
 }

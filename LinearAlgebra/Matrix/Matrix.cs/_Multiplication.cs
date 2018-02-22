@@ -33,5 +33,32 @@
 
             return new Matrix(product, m1.rowLength, m2.columnLength);
         }
+
+        /// <summary>
+        /// Multiplies each element in the current [n x m] matrix with the corresponding element in the provided M2 [n x m] matrix. 
+        /// Returns the product [n x m] matrix.
+        /// </summary>
+        /// <remarks>
+        /// This method is not the standard linear algebra matrix multiply method.
+        /// </remarks>
+        /// <example>
+        /// [10 20 30]   [ 1  2  3]   [1*10 2*20 3*30]   [ 10  40  90]
+        /// [40 50 60] * [ 4  5  6] = [4*40 5*50 6*60] = [160 250 360]
+        /// </example>
+        public Matrix ElementwiseMultiply(Matrix m2)
+        {
+            AssertSizeMatch(this, m2);
+
+            float[,] product = new float[rowLength, columnLength];
+            for (int rowIndex = 0; rowIndex < rowLength; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < columnLength; columnIndex++)
+                {
+                    product[rowIndex, columnIndex] = elements[rowIndex, columnIndex] * m2.elements[rowIndex, columnIndex];
+                }
+            }
+
+            return new Matrix(product, rowLength, columnLength);
+        }
     }
 }

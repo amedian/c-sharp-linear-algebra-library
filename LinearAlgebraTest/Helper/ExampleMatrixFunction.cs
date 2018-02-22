@@ -4,9 +4,9 @@ namespace Amedian.LinearAlgebraTest.Helper
 {
     class ExampleMatrixFunction : IMatrixFunction
     {
-        public float Calculate(float element)
+        public float Calculate(int rowIndex, int columnIndex, float element)
         {
-            return element * 2 + 1;
+            return rowIndex * 2 + columnIndex + element;
         }
     }
 }

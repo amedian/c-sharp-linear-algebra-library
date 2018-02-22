@@ -5,6 +5,6 @@
         /// <summary>
         /// Applies a function on a given matrix element.
         /// </summary>
-        float Calculate(float element);
+        float Calculate(int rowIndex, int columnIndex, float element);
     }
 }
