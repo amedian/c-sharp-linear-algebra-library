@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Amedian.LinearAlgebra</RootNamespace>
     <AssemblyName>AmedianLinearAlgebra</AssemblyName>
-    <Version>2.0.0</Version>
-    <Authors>Amedian</Authors>
+    <Version>2.0.2</Version>
+    <Authors>Karoly Gerner</Authors>
     <Company />
     <Product>Amedian Linear Algebra Library</Product>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.2.0</FileVersion>
   </PropertyGroup>
 
 </Project>

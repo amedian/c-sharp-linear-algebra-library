@@ -2,12 +2,12 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("LinearAlgebraTest")]
+[assembly: AssemblyTitle("Amedian.LinearAlgebraTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LinearAlgebraTest")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018 - present Karoly Gerner")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
