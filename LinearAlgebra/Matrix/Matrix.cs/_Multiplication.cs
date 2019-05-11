@@ -49,16 +49,16 @@
         {
             AssertSizeMatch(this, m2);
 
-            float[,] product = new float[rowLength, columnLength];
-            for (int rowIndex = 0; rowIndex < rowLength; rowIndex++)
+            float[,] product = new float[this.rowLength, this.columnLength];
+            for (int rowIndex = 0; rowIndex < this.rowLength; rowIndex++)
             {
-                for (int columnIndex = 0; columnIndex < columnLength; columnIndex++)
+                for (int columnIndex = 0; columnIndex < this.columnLength; columnIndex++)
                 {
-                    product[rowIndex, columnIndex] = elements[rowIndex, columnIndex] * m2.elements[rowIndex, columnIndex];
+                    product[rowIndex, columnIndex] = this.elements[rowIndex, columnIndex] * m2.elements[rowIndex, columnIndex];
                 }
             }
 
-            return new Matrix(product, rowLength, columnLength);
+            return new Matrix(product, this.rowLength, this.columnLength);
         }
     }
 }

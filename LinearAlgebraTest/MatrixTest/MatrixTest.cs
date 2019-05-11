@@ -1,4 +1,5 @@
-﻿using Amedian.LinearAlgebra;
+﻿using System;
+using Amedian.LinearAlgebra;
 using Amedian.LinearAlgebraTest.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,6 +8,77 @@ namespace Amedian.LinearAlgebraTest
     [TestClass]
     public class MatrixTest
     {
+        [TestMethod]
+        public void TestGetter()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            float expectedResult = 4f;
+
+            // Act
+            float actualResult = m1.Get(1, 0);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestSetter()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            float expectedResult = 50f;
+
+            // Act
+            m1.Set(0, 0, 50f);
+            float actualResult = m1.Get(0, 0);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            string expectedResult = "[ 1 2 3 ]" + Environment.NewLine + "[ 4 5 6 ]" + Environment.NewLine;
+
+            // Act
+            string actualResult = "" + m1;
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestGetRowLength()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            int expectedResult = 2;
+
+            // Act
+            int actualResult = m1.GetRowLength();
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestGetColumnLength()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            int expectedResult = 3;
+
+            // Act
+            int actualResult = m1.GetColumnLength();
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
         [TestMethod]
         public void TestAdd()
         {
@@ -37,6 +109,48 @@ namespace Amedian.LinearAlgebraTest
             // Assert
             Assert.AreEqual(expectedResult, actualResult1);
             Assert.AreEqual(expectedResult, actualResult2);
+        }
+
+        [TestMethod]
+        public void TestEqualMatricies()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            Matrix m2 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            bool expectedIsEqualOperatorResult = true;
+            bool expectedNotEqualOperatorResult = false;
+            bool expectedEqualsResult = true;
+
+            // Act
+            bool actualIsEqualOperatorResult = m1 == m2;
+            bool actualNotEqualOperatorResult = m1 != m2;
+            bool actualEqualsResult = m1.Equals(m2);
+
+            // Assert
+            Assert.AreEqual(expectedIsEqualOperatorResult, actualIsEqualOperatorResult);
+            Assert.AreEqual(expectedNotEqualOperatorResult, actualNotEqualOperatorResult);
+            Assert.AreEqual(expectedEqualsResult, actualEqualsResult);
+        }
+
+        [TestMethod]
+        public void TestNotEqualMatricies()
+        {
+            // Assign
+            Matrix m1 = new Matrix(new float[2, 3] { { 1f, 2f, 3f }, { 4f, 5f, 6f } });
+            Matrix m2 = new Matrix(new float[2, 3] { { 9f, 2f, 3f }, { 4f, 5f, 6f } });
+            bool expectedIsEqualOperatorResult = false;
+            bool expectedNotEqualOperatorResult = true;
+            bool expectedIsEqualResult = false;
+
+            // Act
+            bool actualIsEqualOperatorResult = m1 == m2;
+            bool actualNotEqualOperatorResult = m1 != m2;
+            bool actualEqualsResult = m1.Equals(m2);
+
+            // Assert
+            Assert.AreEqual(expectedIsEqualOperatorResult, actualIsEqualOperatorResult);
+            Assert.AreEqual(expectedNotEqualOperatorResult, actualNotEqualOperatorResult);
+            Assert.AreEqual(expectedIsEqualResult, actualEqualsResult);
         }
 
         [TestMethod]
@@ -185,7 +299,7 @@ namespace Amedian.LinearAlgebraTest
         public void TestCloneCreatesAValueIndependentMatrix()
         {
             // Assign
-            float expectedValue = 1f;
+            float expectedValue = 5f;
             Matrix m1 = new Matrix(new float[1,1] { { expectedValue } });
 
             // Act

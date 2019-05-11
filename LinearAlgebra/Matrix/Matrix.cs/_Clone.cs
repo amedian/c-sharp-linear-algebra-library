@@ -1,4 +1,6 @@
-﻿namespace Amedian.LinearAlgebra
+﻿using System;
+
+namespace Amedian.LinearAlgebra
 {
     partial class Matrix
     {
@@ -7,7 +9,10 @@
         /// </summary>
         public Matrix Clone()
         {
-            return new Matrix((float[,])elements.Clone());
+            float[,] cloned = new float[this.rowLength, this.columnLength];
+            Buffer.BlockCopy(this.elements, 0, cloned, 0, this.elements.Length * sizeof(float));
+
+            return new Matrix(cloned, this.rowLength, this.columnLength);
         }
     }
 }

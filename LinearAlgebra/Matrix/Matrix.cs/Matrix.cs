@@ -10,6 +10,10 @@ namespace Amedian.LinearAlgebra
     /// M1 - M2  : Subtracts M2 from M1
     /// S * M    : Multiplies M matrix with S scalar
     /// M * S    : Multiplies M matrix with S scalar
+    /// M * F    : Multiplies M matrix with a rowIndex + columnIndex based F function
+    /// F * M    : Multiplies M matrix with a rowIndex + columnIndex based F function
+    /// M + S    : Adds S scalar to M matrix
+    /// S + M    : Adds S scalar to M matrix
     /// M1 * M2  : Multiplies M1 matrix with M2 matrix
     /// M1 == M2 : Returns true if all of the corresponding values are matching within Double.Epsilon
     /// M1 != M2 : Returns false if any of the corresponding values are not matching within Double.Epsilon
@@ -49,13 +53,15 @@ namespace Amedian.LinearAlgebra
         /// </remarks>
         public Matrix(float[,] elements)
         {
-            rowLength = elements.GetLength(0);
-            columnLength = elements.GetLength(1);
-            if (rowLength < 1 || columnLength < 1)
+            this.rowLength = elements.GetLength(0);
+            this.columnLength = elements.GetLength(1);
+            if (this.rowLength < 1 || this.columnLength < 1)
             {
-                throw new InvalidDimensionException(string.Format(ERROR_MINIMUM_REQUIREMENTS, rowLength, columnLength));
+                throw new InvalidDimensionException(string.Format(ERROR_MINIMUM_REQUIREMENTS, this.rowLength, this.columnLength));
             }
-            this.elements = (float[,])elements.Clone();
+
+            this.elements = new float[this.rowLength, this.columnLength];
+            Buffer.BlockCopy(elements, 0, this.elements, 0, elements.Length * sizeof(float));
         }
 
         /// <summary>
@@ -77,7 +83,7 @@ namespace Amedian.LinearAlgebra
         /// </summary>
         public override int GetHashCode()
         {
-            return hashCode;
+            return this.hashCode;
         }
 
         /// <summary>
@@ -86,12 +92,12 @@ namespace Amedian.LinearAlgebra
         public override string ToString()
         {
             string s = "";
-            for(int row = 0; row < rowLength; row++)
+            for(int row = 0; row < this.rowLength; row++)
             {
                 s += "[ ";
-                for (int column = 0; column < columnLength; column++)
+                for (int column = 0; column < this.columnLength; column++)
                 {
-                    s += elements[row, column] + " ";
+                    s += this.elements[row, column] + " ";
                 }
                 s += "]" + Environment.NewLine;
             }
@@ -101,22 +107,22 @@ namespace Amedian.LinearAlgebra
 
         public int GetColumnLength()
         {
-            return columnLength;
+            return this.columnLength;
         }
 
         public int GetRowLength()
         {
-            return rowLength;
+            return this.rowLength;
         }
 
         public float Get(int rowIndex, int columnIndex)
         {
-            return elements[rowIndex, columnIndex];
+            return this.elements[rowIndex, columnIndex];
         }
 
         public void Set(int rowIndex, int columnIndex, float newValue)
         {
-            elements[rowIndex, columnIndex] = newValue;
+            this.elements[rowIndex, columnIndex] = newValue;
         }
 
         /// <summary>
