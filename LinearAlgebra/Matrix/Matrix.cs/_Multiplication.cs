@@ -40,6 +40,7 @@
         /// </summary>
         /// <remarks>
         /// This method is not the standard linear algebra matrix multiply method.
+        /// This operation is not a linear algebra standard.
         /// </remarks>
         /// <example>
         /// [10 20 30]   [ 1  2  3]   [1*10 2*20 3*30]   [ 10  40  90]

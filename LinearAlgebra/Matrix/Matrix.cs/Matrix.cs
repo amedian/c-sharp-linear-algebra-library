@@ -8,12 +8,14 @@ namespace Amedian.LinearAlgebra
     /// ~M       : transposes M matrix
     /// M1 + M2  : Adds M1 to M2
     /// M1 - M2  : Subtracts M2 from M1
-    /// S * M    : Multiplies M matrix with S scalar
-    /// M * S    : Multiplies M matrix with S scalar
-    /// M * F    : Multiplies M matrix with a rowIndex + columnIndex based F function
-    /// F * M    : Multiplies M matrix with a rowIndex + columnIndex based F function
-    /// M + S    : Adds S scalar to M matrix
-    /// S + M    : Adds S scalar to M matrix
+    /// M - S    : Subtracts S scalar from M matrix elements
+    /// S - M    : Subtracts M matrix from S scalar producing matrix result
+    /// S * M    : Multiplies M matrix elements with S scalar
+    /// M * S    : Multiplies M matrix elements with S scalar
+    /// M * F    : Multiplies M matrix elements with a (rowIndex, columnIndex) based F function
+    /// F * M    : Multiplies M matrix elements with a (rowIndex, columnIndex) based F function
+    /// M + S    : Adds S scalar to M matrix elements
+    /// S + M    : Adds S scalar to M matrix elements
     /// M1 * M2  : Multiplies M1 matrix with M2 matrix
     /// M1 == M2 : Returns true if all of the corresponding values are matching within Double.Epsilon
     /// M1 != M2 : Returns false if any of the corresponding values are not matching within Double.Epsilon
@@ -49,7 +51,7 @@ namespace Amedian.LinearAlgebra
         /// The matrix' dimension has to be at least [1 x 1].
         /// </summary>
         /// <remarks>
-        /// Provided values are cloned and the proveded reference is omitted in the further process.
+        /// Provided values are cloned and the provided reference is omitted in the further process.
         /// </remarks>
         public Matrix(float[,] elements)
         {

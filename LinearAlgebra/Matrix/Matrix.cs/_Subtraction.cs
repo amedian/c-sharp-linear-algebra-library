@@ -38,7 +38,7 @@
         /// Substracts each element in the provided [n x m] matrix from the provided float value.
         /// </summary>
         /// <remarks>
-        /// Returns an [n x m] reference independent matrix.
+        /// This operation is not a linear algebra standard.
         /// </remarks>
         /// <example>
         /// Input:
@@ -70,7 +70,7 @@
         /// Returns the difference [n x m] matrix.
         /// </summary>
         /// <remarks>
-        /// Returns an [n x m] reference independent matrix.
+        /// This operation is not a linear algebra standard.
         /// </remarks>
         /// <example>
         /// Input:

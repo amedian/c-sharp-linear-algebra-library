@@ -47,6 +47,9 @@
         /// [4 5 6]
         /// [7 8 9]
         /// </example>
+        /// <remarks>
+        /// This operation is not a linear algebra standard.
+        /// </remarks>
         public static Matrix operator +(float f, Matrix m1)
         {
             float[,] sum = new float[m1.rowLength, m1.columnLength];
